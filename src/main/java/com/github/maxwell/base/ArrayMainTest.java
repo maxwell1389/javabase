@@ -15,7 +15,7 @@ public class ArrayMainTest {
      * @param value
      * @return
      */
-    private static int binSearch(in t[] input, int low, int high, int value){
+    private static int binSearch(int[] input, int low, int high, int value){
         if(low > high)
             return  -1;
         int mid = low + ((high - low) >> 1);
