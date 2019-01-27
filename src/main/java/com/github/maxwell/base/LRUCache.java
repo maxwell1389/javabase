@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 最近最少使用缓存
  */
-@Slf4j
+//@Slf4j
 public class LRUCache {
 
     private int capacity;
