@@ -1,4 +1,6 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.lru;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;

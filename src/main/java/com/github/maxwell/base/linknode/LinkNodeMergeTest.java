@@ -1,4 +1,4 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.linknode;
 
 import org.junit.Test;
 

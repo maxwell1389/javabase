@@ -1,4 +1,4 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.linknode;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)
@@ -95,5 +95,6 @@ public class LinkNodeTest {
             this.next = next;
         }
     }
+
 
 }
