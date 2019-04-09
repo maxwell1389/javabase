@@ -1,4 +1,4 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.algorithm;
 
 import org.junit.Test;
 
@@ -101,5 +101,7 @@ public class AvlTreeNodeTest {
             this.data = data;
         }
     }
+
+
 
 }

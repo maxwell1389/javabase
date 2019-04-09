@@ -1,4 +1,4 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.string;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)

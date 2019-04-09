@@ -1,4 +1,4 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.algorithm;
 
 import java.util.ArrayList;
 import java.util.HashMap;

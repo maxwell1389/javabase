@@ -1,4 +1,4 @@
-package com.github.maxwell.base;
+package com.github.maxwell.base.thread;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

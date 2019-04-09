@@ -5,7 +5,7 @@ public class Book {
     {
         staticFunction();
     }
-
+    static Book book = new Book();
     static
     {
         System.out.println("书的静态代码块");
@@ -23,5 +23,5 @@ public class Book {
     }
     int price = 110;
     static int amount = 112;
-    static Book book = new Book();
+
 }
