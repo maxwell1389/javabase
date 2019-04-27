@@ -1,7 +1,10 @@
 package com.github.maxwell.base;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 
+@Slf4j
 public class BinnarySearchMainTest {
 
     /**
@@ -32,7 +35,7 @@ public class BinnarySearchMainTest {
         }
     }
 
-    private static int[] searchNearNums(int[] input, int index, int num) {
+    public static int[] searchNearNums(int[] input, int index, int num) {
         int[] results = new int[num];
         if (index == 0) {
             for (int i = 0; i < num; i++) {
@@ -72,7 +75,7 @@ public class BinnarySearchMainTest {
                     if (rindex == num - 1)
                         return results;
                     if ((++right) < input.length) {
-                        results[++rindex] = right++;
+                        results[++rindex] = right;
                         if (rindex == num - 1)
                             return results;
                     } else {
@@ -93,10 +96,24 @@ public class BinnarySearchMainTest {
         return results;
     }
 
+    public static int[] randomInts(int[] input, int size) {
+        if (input.length <= size)
+            return input;
+        Set<Integer> sets = new LinkedHashSet<>();
+        Random r = new Random();
+        while (true) {
+            sets.add(input[r.nextInt(input.length)]);
+            if(sets.size() == size) break;
+        }
+        return sets.stream().mapToInt(Integer::intValue).toArray();
+    }
+
     public static void main(String[] args) {
-        List<Integer> lst = Arrays.asList(8, 11, 19, 23, 27, 33, 45, 67, 98);
-/*        int[] b = lst.stream().mapToInt(Integer::valueOf).toArray();
-//        int[] b = {8, 11, 11, 19, 23, 27, 33, 45, 67, 98};
+//        List<Integer> lst = Arrays.asList(8, 11, 19, 23, 27, 33, 45, 67, 98);
+        List<Integer> lst = Arrays.asList(0, 0, 0, 0, 1, 1, 1, 1, 2, 2,2);
+
+        int[] b = lst.stream().mapToInt(Integer::valueOf).toArray();
+/*       int[] b = {8, 11, 11, 19, 23, 27, 33, 45, 67, 98};
         int value = 67;
         int index = binSearch(b, 0, b.length - 1, value);
         System.out.println("index:" + index);
@@ -113,7 +130,7 @@ public class BinnarySearchMainTest {
         System.out.println(lst.contains(20));
         System.out.println(lst.stream().filter(a -> (a>=19 && a<=27)).count());
         System.out.println(lst.stream().filter(a -> a>=19 ).filter(a -> a<=27).count());*/
-        Set<Integer> sets = new LinkedHashSet<>();
+/*        Set<Integer> sets = new LinkedHashSet<>();
         Random r = new Random();
         List<Integer> lstint = new ArrayList<>();
         while (true) {
@@ -124,10 +141,17 @@ public class BinnarySearchMainTest {
         }
         int[] seats = sets.stream().mapToInt(Integer::intValue).toArray();
         System.out.println(sets);
-        System.out.println(seats);
+        System.out.println(seats);*/
+/*        int[] seats = randomInts(b, 10);
+        log.info("seats {}",seats);
         for (int a:seats) {
             System.out.printf(a + " ");
-        }
+        }*/
 //        System.out.println(lstint);
+
+        int[] nearNums = searchNearNums(b,8 , 10);
+        for (int i = 0; i < nearNums.length; i++) {
+            System.out.print(nearNums[i] + " ");
+        }
     }
 }

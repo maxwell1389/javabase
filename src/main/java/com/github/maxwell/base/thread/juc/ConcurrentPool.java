@@ -1,4 +1,4 @@
-package com.github.maxwell.base.juc;
+package com.github.maxwell.base.thread.juc;
 
 import lombok.extern.slf4j.Slf4j;
 
