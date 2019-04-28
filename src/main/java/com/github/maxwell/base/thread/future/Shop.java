@@ -41,7 +41,7 @@ public class Shop {
         return Math.random();
     }
 
-    public static void delay() {
+    public void delay() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
