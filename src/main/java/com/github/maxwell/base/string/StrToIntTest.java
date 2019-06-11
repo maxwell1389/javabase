@@ -52,6 +52,7 @@ public class StrToIntTest extends Thread {
 
     public static void main(String[] args) throws InterruptedException {
         StrToIntTest strToIntTest = new StrToIntTest();
+        StringBuffer stringBuffer = new StringBuffer();
         String input = "1213";
         input = "-1213";
 //        input = "+1213";
