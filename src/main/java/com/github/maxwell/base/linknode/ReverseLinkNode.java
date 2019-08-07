@@ -1,5 +1,7 @@
 package com.github.maxwell.base.linknode;
 
+import java.util.LinkedList;
+
 /**
  * 链表逆转
  *
@@ -11,6 +13,7 @@ public class ReverseLinkNode<T> {
     Node<T> tail;
 
     public ReverseLinkNode(T... values) {
+        LinkedList<?> e;
         for (T value : values) {
             if (tail == null) {
                 head = tail = newNode(value);

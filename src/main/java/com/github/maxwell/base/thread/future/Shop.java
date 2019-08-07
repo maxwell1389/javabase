@@ -223,7 +223,7 @@ public class Shop {
     }
 
     public void testException() {
-        CompletableFuture<String> f0 = CompletableFuture.supplyAsync(() -> String.valueOf(7 / 2))
+        CompletableFuture<String> f0 = CompletableFuture.supplyAsync(() -> String.valueOf(7 / 0))
                 .thenApply(r -> String.valueOf(Integer.parseInt(r) * 10))
                 .exceptionally(e -> {
                     e.printStackTrace();

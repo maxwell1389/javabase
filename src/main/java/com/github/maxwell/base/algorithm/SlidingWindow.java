@@ -41,7 +41,7 @@ public class SlidingWindow {
 
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 2, 4, 3};
-        int s = 7;
+        int s = 6;
         log.info("minSubArrayLen {}", minSubArrayLen(s, nums));
     }
 }

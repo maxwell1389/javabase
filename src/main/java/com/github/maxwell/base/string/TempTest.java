@@ -1,7 +1,8 @@
 package com.github.maxwell.base.string;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-
+@Slf4j
 public class TempTest {
 
     @Test
@@ -36,6 +37,27 @@ public class TempTest {
 //        String output = reverseStr(str);
         String output = reverseStrFor(str);
         System.out.printf("output: %s", output);
+    }
+
+    /**
+     * 100阶乘的结尾0的个数
+     *
+     * @return
+     */
+    // 只用计算5因子的个数即可，因为5因子的个数肯定小于2因子的个数
+    @Test
+    public void trailingZeros() {
+        int input = 2009;
+        int quotient;
+        int fiveFactors = 0;
+        quotient = input / 5;
+        int i = 1;
+        while (quotient != 0) {
+            fiveFactors += quotient;
+            i++;
+            quotient = (int) (input / Math.pow(5, i));
+        }
+        log.info("result {}", fiveFactors);
     }
 
     /**
