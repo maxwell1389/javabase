@@ -37,6 +37,6 @@ public class FileSizeMain {
     }
 
     public static void main(String[] args) {
-        log.info("size:{}", getPrintSize(210627106));
+        log.info("size:{}", getPrintSize(453428628));
     }
 }

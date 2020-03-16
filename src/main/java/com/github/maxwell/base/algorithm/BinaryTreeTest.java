@@ -2,10 +2,6 @@ package com.github.maxwell.base.algorithm;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * 二叉树
  */
@@ -34,6 +30,10 @@ public class BinaryTreeTest {
         return calAvl(node) != -1;
     }
 
+    public int sumRootToLeaf(TreeNode node) {
+        return func(node, 0);
+    }
+
 
     public void toString(TreeNode root) {
         if (root != null) {
@@ -49,6 +49,25 @@ public class BinaryTreeTest {
         int right = calAvl(node.right);
         if (left == -1 || right == -1 || Math.abs(left - right) > 1) return -1;
         return Math.max(left, right) + 1;
+    }
+
+    /**
+     * 将当前节点和父节点的值合并并转换成十进制；
+     * 遍历整个树，且只有当节点为叶子节点时才做值的统计；
+     * <p>
+     * 如果是当前节点叶子节点，返回父节点值与当前节点值计算后的值；
+     * 如果当前节点是空节点，返回0，以使得结果不受影响；
+     * 如果当前节点是中间节点，返回左右子树递归的结果；
+     *
+     * @param node
+     * @param v
+     * @return
+     */
+    private int func(TreeNode node, int v) {
+        if (null == node) return 0;
+        v = 2 * v + node.value;
+        if (null == node.left && null == node.right) return v;
+        return func(node.left, v) + func(node.right, v);
     }
 
     /**

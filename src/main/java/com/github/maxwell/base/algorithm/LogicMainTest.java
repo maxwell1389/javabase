@@ -9,20 +9,22 @@ public class LogicMainTest {
 
     /**
      * 截取字符
+     *
      * @param str
      * @param len
      * @param step
      */
-    private static void subString(String str, int len, int step){
-            for (int i = 0; i < step; i++){
-                System.out.println(len + ":" + str.substring(i, i+(len)));
-            }
-            if(len > 1)
-                subString(str, (len-1), step+1);
+    private static void subString(String str, int len, int step) {
+        for (int i = 0; i < step; i++) {
+            System.out.println(len + ":" + str.substring(i, i + (len)));
+        }
+        if (len > 1)
+            subString(str, (len - 1), step + 1);
     }
 
     /**
      * 两数之和等于目标数
+     *
      * @param nums
      * @param target
      * @return
@@ -32,7 +34,7 @@ public class LogicMainTest {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
+                return new int[]{map.get(complement), i};
             }
             map.put(nums[i], i);
         }
@@ -41,16 +43,17 @@ public class LogicMainTest {
 
     /**
      * 求相反数
+     *
      * @param nums
      * @param target
      * @return
      */
-    private static List twoSumZero(int[] nums, int target){
+    private static List twoSumZero(int[] nums, int target) {
         List<int[]> lst = new ArrayList<int[]>();
         Map<Integer, Integer> mapInt = new HashMap<Integer, Integer>();
-        for (int i=0; i<nums.length; i++){
+        for (int i = 0; i < nums.length; i++) {
             int value = target - nums[i];
-            if(mapInt.containsKey(value)){
+            if (mapInt.containsKey(value)) {
                 lst.add(new int[]{value, -value});
             }
             mapInt.put(nums[i], nums[i]);
@@ -59,11 +62,12 @@ public class LogicMainTest {
     }
 
     /**
-     * 走台阶，求共有多少种走法
+     * 走台阶，求共有多少种走法(动态规划)
+     *
      * @param n
      * @return
      */
-    private static long climbStairs(long n){
+    private static long climbStairs(long n) {
         if (n <= 2)
             return n;
         //第一台阶，两种走
@@ -72,7 +76,7 @@ public class LogicMainTest {
         long twoStep = 1;
         //总共走法
         long totalStep = 0;
-        for(int step = 2; step < n; step++){
+        for (int step = 2; step < n; step++) {
             totalStep = oneStep + twoStep;
             twoStep = oneStep;
             oneStep = totalStep;
@@ -80,17 +84,17 @@ public class LogicMainTest {
         return totalStep;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /**
          * 规则拆分
-        String str = "1234560";
-        subString(str, str.length(), 1);
+         String str = "1234560";
+         subString(str, str.length(), 1);
          **/
         /**
          * 两数之和等于目标数
-        int[] ints = {2, 7, 10, 13};
-        int[] rints = twoSum(ints, 9);
-        System.out.println(rints);
+         int[] ints = {2, 7, 10, 13};
+         int[] rints = twoSum(ints, 9);
+         System.out.println(rints);
          **/
 
 /*        int [] oints = {9, 1, 3, 8, -10, 7, -9, -2, -8, 2};
