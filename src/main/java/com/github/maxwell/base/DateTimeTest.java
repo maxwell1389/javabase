@@ -1,6 +1,7 @@
 package com.github.maxwell.base;
 
-import com.github.maxwell.base.main.ScoreType;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.plexus.util.StringUtils;
 import org.slf4j.Logger;
@@ -9,13 +10,13 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Slf4j
 public class DateTimeTest {
     private static Logger logger = LoggerFactory.getLogger(DateTimeTest.class);
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static final DateTimeFormatter DTF4 = DateTimeFormatter.ofPattern("MMdd");
 
     public static String getStrDateTimeFmSec(Long longDateTime) {
         return (longDateTime == null || longDateTime.longValue() == 0) ? "" : LocalDateTime.ofInstant(Instant.ofEpochSecond(longDateTime), ZoneId.systemDefault()).format(DTF);
@@ -81,7 +82,7 @@ public class DateTimeTest {
             LocalDate.parse(strDatetime, formatter);
             return true;
         } catch (Exception e) {
-            logger.error("checkDateFormatter error:{}",e);
+            logger.error("checkDateFormatter error:{}", e);
             return false;
         }
     }
@@ -124,7 +125,52 @@ public class DateTimeTest {
                 .longValue();
     }
 
+    public static double toDecimal(long amount, int decimal) {
+        String strAmount = Long.toString(amount);
+        StringBuilder val = new StringBuilder();
+        int len = strAmount.length();
+        if (strAmount.length() > decimal) {
+            val.append(strAmount.substring(0, len - decimal))
+                    .append(".")
+                    .append(strAmount.substring(len - decimal));
+        } else {
+            if (amount < 0)
+                val.append("-0.");
+            else
+                val.append("0.");
+            int zeros = decimal - len;
+            if (amount < 0)
+                zeros += 1;
+            while (zeros-- > 0) {
+                val.append("0");
+            }
+            if (amount < 0)
+                val.append(strAmount.replace("-", ""));
+            else
+                val.append(strAmount);
+        }
+        return new BigDecimal(val.toString()).doubleValue();
+    }
+
+    public static double cutDecimal(double value, int keepDigit) {
+        BigDecimal bg = new BigDecimal(Double.toString(value));
+        return bg.setScale(keepDigit, BigDecimal.ROUND_FLOOR).doubleValue();
+    }
+
+    public static Double divDouble(Double firstV, Double secondV, Integer scale) {
+        if (firstV == null || secondV == null || secondV.intValue() == 0) return 0.0;
+        return BigDecimal.valueOf(firstV.doubleValue()).divide(BigDecimal.valueOf(secondV.doubleValue()), scale, BigDecimal.ROUND_HALF_DOWN)
+                .doubleValue();
+    }
+
+    public static String decDays(LocalDate startDate, int days) {
+        if (null == startDate) return "";
+        return DTF4.format(startDate.minusDays(days));
+    }
+
     public static void main(String[] args) {
+//        log.info("day {}", decDays(LocalDate.now(), 2));
+//        log.info("dd {}", divDouble(0.0001, 100.0, 6));
 /*        LocalDate stdate = LocalDate.of(2019, 3, 28);
         LocalDate enddate = LocalDate.of(2019, 4, 1);
         logger.info("days {}", ChronoUnit.DAYS.between(stdate, enddate));
@@ -173,6 +219,23 @@ public class DateTimeTest {
 //        log.info("v {}", divInteger(67, 2, 0));
 
         log.info("v {}", getLongDateNowMs());
+/*        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> mapData = new HashMap<>();
+        mapData.put("id", 1);
+        mapData.put("prob", 0.1);
+        mapData.put("multipleRatio", 0.4);
+        dataList.add(mapData);
+
+        String jsonData = gson.toJson(dataList);
+        log.info("jsonData {}", jsonData);*/
+
+//        log.info("dd {}", toDecimal(-50000L, 5));
+//        log.info("dd {}", cutDecimal(toDecimal(-10000000L, 5), 5));
+/*        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        String  sjon = "{\"10\":1.0E-6,\"100\":1.0E-5,\"1000\":1.0E-4}";
+        Map<String, Object> mapData = gson.fromJson(sjon, Map.class);
+        log.info("ss {}", (Double)mapData.get("100") * 1000);*/
+
 
     }
 }
