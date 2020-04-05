@@ -181,7 +181,13 @@ public class DateTimeTest {
         logger.info("secords {}", Duration.between(inst1, inst2).getSeconds());
         logger.info("millis {}", Duration.between(inst1, inst2).toMillis());*/
 
-//        log.info("time {}", getStrDateTimeFm(1581598217315L));
+        log.info("time {}", getStrDateTimeFm(1585501522339L));
+        log.info("time {}", getStrDateTimeFm(1585501522312L));
+
+        log.info("time {}", getStrDateTimeFm(1585507334567L));
+        log.info("time {}", getStrDateTimeFm(1585507306926L));
+        log.info("time {}", getStrDateTimeFm(1585507209342L));
+
 //        Long lg = 1560826860000L + 2*60*60*1000L;
 //        log.info("lg time {}", getStrDateTimeFm(lg));
 
@@ -218,7 +224,7 @@ public class DateTimeTest {
 
 //        log.info("v {}", divInteger(67, 2, 0));
 
-        log.info("v {}", getLongDateNowMs());
+//        log.info("v {}", getLongDateNowMs());
 /*        List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> mapData = new HashMap<>();
         mapData.put("id", 1);
