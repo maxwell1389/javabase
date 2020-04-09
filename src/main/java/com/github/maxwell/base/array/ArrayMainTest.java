@@ -30,6 +30,33 @@ public class ArrayMainTest {
         }
     }
 
+    /**
+     * 二维数组查找
+     *
+     * 矩阵是有序的，从左下角来看，向上数字递减，向右数字递增， 因此从左下角开始查找，当要查找数字比左下角数字大时。
+     * 右移 要查找数字比左下角数字小时，上移。这样找的速度最快。
+     *
+     * @param target
+     * @param array
+     * @return
+     */
+    public boolean Find(int target, int [][] array) {
+        //基本思路从左下角开始找，这样速度最快
+        int row = array.length-1;//行
+        int column = 0;//列
+        //当行数大于0，当前列数小于总列数时循环条件成立
+        while((row >= 0)&& (column< array[0].length)){
+            if(array[row][column] > target){
+                row--;
+            }else if(array[row][column] < target){
+                column++;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int[] b = {8, 11, 11, 19, 23, 27, 33, 45, 67, 98};
         int value = 67;
