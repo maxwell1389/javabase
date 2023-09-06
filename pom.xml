@@ -126,46 +126,9 @@
             <version>1.7.7.Final</version>
         </dependency>
         <dependency>
-            <groupId>com.gexin</groupId>
-            <artifactId>sdk-base</artifactId>
-            <version>4.0.0.14</version>
-            <scope>system</scope>
-            <systemPath>${ext.lib.path}/gexin-rp-sdk-base-4.0.0.14.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.gexin</groupId>
-            <artifactId>sdk-http</artifactId>
-            <version>4.0.1.9</version>
-            <scope>system</scope>
-            <systemPath>${ext.lib.path}/gexin-rp-sdk-http-4.0.1.9.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.gexin</groupId>
-            <artifactId>sdk-template</artifactId>
-            <version>4.0.0.8</version>
-            <scope>system</scope>
-            <systemPath>${ext.lib.path}/gexin-rp-sdk-template-4.0.0.8.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.gexin</groupId>
-            <artifactId>fastjsonl</artifactId>
-            <version>1.0.0.0</version>
-            <scope>system</scope>
-            <systemPath>${ext.lib.path}/gexin-rp-fastjson-1.0.0.0.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.google</groupId>
-            <artifactId>protobuf</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${ext.lib.path}/protobuf-java-2.5.0.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.taobao</groupId>
-            <artifactId>taobao-sdk</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${ext.lib.path}/taobao-sdk-java.jar</systemPath>
+            <groupId>com.googlecode.aviator</groupId>
+            <artifactId>aviator</artifactId>
+            <version>5.3.3</version>
         </dependency>
     </dependencies>
 </project>
